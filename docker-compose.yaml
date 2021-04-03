@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  ocr:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: ocr
+    restart: always
+    ports:
+      - "7077:7077"
+    # environment:
+    #   - API_KEY=
+    #   - ALLOWED_IDS=
+    #   - USER_ID=
+    #   - USER_KEY=
+    #   - PYTHONIOENCODING=
+    #   - LANG=
+    # volumes:
+    #     - /var/run/docker.sock:/var/run/docker.sock
