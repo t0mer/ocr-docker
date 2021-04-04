@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  portainer:
+  ocr:
     image: techblog/ocr-docker:latest
     ports:
       - "8080:8080"
