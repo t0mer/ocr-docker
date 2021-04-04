@@ -1,20 +1,12 @@
 version: "3.7"
-
 services:
-  ocr:
-    build: 
-      context: .
-      dockerfile: ./Dockerfile
-    container_name: ocr
-    restart: always
+  portainer:
+    image: techblog/ocr-docker:latest
     ports:
-      - "7077:7077"
-    # environment:
-    #   - API_KEY=
-    #   - ALLOWED_IDS=
-    #   - USER_ID=
-    #   - USER_KEY=
-    #   - PYTHONIOENCODING=
-    #   - LANG=
-    # volumes:
-    #     - /var/run/docker.sock:/var/run/docker.sock
+      - "8080:8080"
+    container_name: tts-stt
+    labels:
+      - "com.ouroboros.enable=true"
+    networks:
+      - default
+    restart: unless-stopped
