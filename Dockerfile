@@ -39,6 +39,6 @@ RUN  pip3 install --upgrade pip --no-cache-dir && \
  #Copy languages files
  COPY traineddata /usr/share/tesseract-ocr/5/tessdata
  
- EXPOSE 7077
+ EXPOSE 8080
  
  ENTRYPOINT ["/usr/bin/python3", "/opt/ocr/ocr.py"]
