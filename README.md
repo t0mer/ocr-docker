@@ -26,7 +26,7 @@ OCR-Docker is a Python & [Flask](https://flask.palletsprojects.com/en/1.1.x/) po
 ```yaml
 version: "3.7"
 services:
-  portainer:
+  ocr:
     image: techblog/ocr-docker:latest
     ports:
       - "8080:8080"
