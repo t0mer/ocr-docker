@@ -24,7 +24,7 @@ RUN  pip3 install --upgrade pip --no-cache-dir && \
      pip3 install flask --no-cache-dir && \
      pip3 install flask_restful --no-cache-dir && \
      pip3 install loguru --no-cache-dir && \
-     pip3 install cryptography==2.6.1 --no-cache-dir && \
+     pip3 install cryptography --no-cache-dir && \
      pip3 install pytesseract --no-cache-dir && \
      pip3 install Pillow --no-cache-dir && \
      pip3 install Image --no-cache-dir && \
