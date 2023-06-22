@@ -1,7 +1,7 @@
 # OCR-Docker
 ## Extract text from images & pdf files
 
-OCR-Docker is a Python & [Flask](https://flask.palletsprojects.com/en/1.1.x/) powerd, easy to use system that hepls us to easely extrat text from images and pdf files in multiple languages.
+OCR-Docker is a Python & [Flask](https://flask.palletsprojects.com/en/1.1.x/) powered, easy to use system that helps us to easily extract text from images and pdf files in multiple languages.
 
 ## Features
 
@@ -37,8 +37,8 @@ services:
       - default
     restart: unless-stopped
 ```
-Now, run ```docker-copmose up -d``` to pull and run your container.
-Open your browser and nevigate to your container ip address wieh port 8080, you should see the following screen.
+Now, run ```docker-compose up -d``` to pull and run your container.
+Open your browser and navigate to your container ip address with port 8080, you should see the following screen.
 
 [![OCR](https://github.com/t0mer/ocr-docker/blob/main/screenshot/ocr.png?raw=true "OCR")](https://github.com/t0mer/ocr-docker/blob/main/screenshot/ocr.png?raw=true "OCR")
 

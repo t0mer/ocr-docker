@@ -15,15 +15,15 @@ except ImportError:
     import Image
 
 
-# Validating file extention
+# Validating file extension
 def allowed_file(image_file):
-    logger.info("Validating file extention")
+    logger.info("Validating file extension")
     return '.' in image_file and \
            image_file.rsplit('.', 1)[1].lower() in "png,jpg,pdf,tiff"
 
-# Getting file extention
+# Getting file extension
 def getExtention(image_file):
-    logger.info("Getting file extention")
+    logger.info("Getting file extension")
     filename, file_extension = os.path.splitext(image_file)
     return filename, file_extension
 
