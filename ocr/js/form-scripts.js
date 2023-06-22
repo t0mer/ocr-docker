@@ -29,7 +29,7 @@ $(document).ready(function () {
     getLanguages();
 });
 
-//Get list of optional voices for the requeated language
+//Get list of optional voices for the requested language
 
 
 ///Get list of supported SST Languages
@@ -79,7 +79,7 @@ function formSuccess(data) {
 }
 
 function formError() {
-    $("#contactForm").val("Un supported language");
+    $("#contactForm").val("Unsupported language");
 
 }
 
