@@ -1,5 +1,5 @@
 
-FROM ubuntu:24.10
+FROM ubuntu:18.04
 
 LABEL maintainer="tomer.klein@gmail.com"
 
