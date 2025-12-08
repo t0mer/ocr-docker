@@ -4,6 +4,14 @@ voices = '';
 $(document).ready(function () {
     $('#ocr').click(function () {
         $('#working').show();
+        var imageUrl = $('#imageUrl').val().trim();
+        var hasFile = $('#imgInp').val();
+
+        if (!hasFile && !imageUrl) {
+            alert('Please select a file (image/PDF/CSV) or provide an image URL.');
+            $('#working').hide();
+            return;
+        }
         var form_data = new FormData($('#ocr_form')[0]);
         $.ajax({
             type: 'POST',
@@ -12,18 +20,39 @@ $(document).ready(function () {
             contentType: false,
             cache: false,
             processData: false,
-            success: function (data) {
-                try {
-                    $('#result').val(data)
-                    $('#working').hide();
-                }
-                catch (err) {
-                    $('#working').hide();
-                }
-                if (data.hasOwnProperty('error')) {
-                    $('#working').hide();
-                }
+            xhrFields: {
+                responseType: 'blob'
             },
+            success: function (data, status, xhr) {
+                const disposition = (xhr.getResponseHeader('Content-Disposition') || '').toLowerCase();
+                const isCsv = disposition.includes('attachment') && disposition.includes('.csv');
+
+                if (isCsv) {
+                    const downloadNameMatch = /filename="?([^";]+)"?/i.exec(xhr.getResponseHeader('Content-Disposition') || '');
+                    const downloadName = downloadNameMatch && downloadNameMatch[1] ? downloadNameMatch[1] : 'ocr_results.csv';
+                    const blob = new Blob([data], { type: xhr.getResponseHeader('Content-Type') || 'text/csv' });
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = downloadName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                    $('#result').val('Se generó un CSV con los resultados y se descargó automáticamente.');
+                    $('#working').hide();
+                    return;
+                }
+
+                new Response(data).text().then(function (text) {
+                    $('#result').val(text);
+                }).finally(function () {
+                    $('#working').hide();
+                });
+            },
+            error: function () {
+                $('#working').hide();
+            }
         });
     });
     getLanguages();
